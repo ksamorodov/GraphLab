@@ -12,10 +12,14 @@ public class Graph extends Matrix {
         super(mat);
     }
 
-
     private int findMinLength(int start, int finish, LinkedList<Integer> list, int length) {
         int newLength = 0;
         list.add(start);
+        if (list.size() - 1 >= length) {
+            list.removeLast();
+            return length;
+        }
+
         for (int i = 0; i < row; i++) {
             if (matrix[start][i] != 0) {
                 if (i == finish) {
@@ -34,7 +38,17 @@ public class Graph extends Matrix {
                 list.removeLast();
             }
         }
+
         return length;
+    }
+
+    public int findMinLength(int start, int finish) {
+        if (start == finish)
+            return 0;
+        LinkedList<Integer> list = new LinkedList();
+        int length = matrix[0].length * matrix.length;
+
+        return findMinLength(start, finish, list, length);
     }
 
     private int findMaxLength(int start, int finish, LinkedList<Integer> list, int length) {
@@ -59,15 +73,6 @@ public class Graph extends Matrix {
             }
         }
         return length;
-    }
-
-    public int findMinLength(int start, int finish) {
-        if (start == finish)
-            return 0;
-        LinkedList<Integer> list = new LinkedList();
-        int length = matrix[0].length * matrix.length;
-
-        return findMinLength(start, finish, list, length);
     }
 
     public int findMaxLength(int start, int finish) {
