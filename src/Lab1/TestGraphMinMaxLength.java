@@ -18,20 +18,20 @@ class TestGraphMinMaxLength {
             }
         }
         arr[0][1] = 1;
-        arr[0][3] = 1;
+        arr[0][3] = 0;
         arr[1][0] = 1;
-        arr[1][2] = 1;
+        arr[1][2] = 0;
         arr[1][3] = 1;
-        arr[2][1] = 1;
+        arr[2][1] = 0;
         arr[2][3] = 1;
-        arr[2][6] = 1;
+        arr[2][6] = 0;
         for (int i = 0; i < 7; i++) {
             arr[3][i] = 1;
         }
         arr[3][3] = 0;
         arr[4][3] = 1;
         arr[4][6] = 1;
-        arr[5][3] = 1;
+        arr[5][3] = 0;
         arr[5][6] = 1;
         arr[6][2] = 1;
         arr[6][4] = 1;
@@ -39,12 +39,14 @@ class TestGraphMinMaxLength {
 
         Graph graph = new Graph(arr);
         graph.print();
-        //System.out.println(graph.findMinLength(0, 5));
+        System.out.println(graph.findMinLength(0, 5));
         System.out.println(graph.findMaxLength(0, 5));
+        System.out.println(graph.findMinLength(0, 6));
+        System.out.println(graph.findMaxLength(0, 6));
         if (graph.findMinLength(0, 5) == 2) {
             System.out.println("ege graph min length checked");
         }
-        if (graph.findMaxLength(0, 5) == 5) {
+        if (graph.findMaxLength(0, 5) == 6) {
             System.out.println("ege graph max length checked");
         }
         if (graph.findMinLength(0, 6) == 2) {
